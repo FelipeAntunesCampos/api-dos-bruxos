@@ -52,9 +52,63 @@ app.get('/casas', (req, res) => {
   });
 });
 
-//Rota Bruxos
-app.get('/bruxos', (req, res) => {
-    res.json(bruxos)
+// Rota das casas
+app.get("/bruxos/casa/:casa", (req, res) => {
+  let casa = req.params.casa;
+  const bruxosDaCasa = bruxos.filter(b => b.casa.toLowerCase() === casa.toLowerCase());
+  if (bruxosDaCasa.length > 0) {
+    res.status(200).json(bruxosDaCasa);
+  } else {
+    res.status(404).json({
+      mensagem: "Nenhum bruxo encontrado nessa casa!"
+    })
+  }
+});
+
+app.get("/bruxos", (req, res) => {
+  res.json(bruxos);
+});
+app.get("/bruxos/:id", (req, res) => {
+  let id = req.params.id;
+  id = parseInt(id);
+  const bruxo = bruxos.find(b => b.id === id);
+  if (bruxo) {
+    res.status(200).json(bruxo);
+  } else {
+    res.status(404).json({
+      "success": false,
+      "error": "Bruxo não encontrado",
+      "message": "Nenhum bruxo",
+      "codigo": "WIZARD_NOT_FOUND"
+    });
+  }
+});
+app.get("/bruxos/nome/:nome", (req, res) => {
+  let nome = req.params.nome.toLowerCase();
+  const bruxosEncontrados = bruxos.filter(b =>
+    b.nome.toLowerCase().includes(nome)
+  );
+  if (bruxosEncontrados.length > 0) {
+    res.status(200).json(bruxosEncontrados);
+  } else {
+    res.status(404).json({
+      mensagem: "Bruxo(s) nao encontrado(s)!"
+    });
+  }
+});
+
+app.get("/bruxos/varinha/:varinha", (req, res) => {
+  let varinha = req.params.varinha.toLowerCase();
+  const bruxosEncontrados = bruxos.filter(b =>
+    b.varinha.toLowerCase().includes(varinha)
+  );
+  if (bruxosEncontrados.length > 0) {
+    res.status(200).json(bruxosEncontrados);
+  } else {
+    res.status(404).json({
+      mensagem: "Bruxo(s) nao encontrado(s)!"
+    });
+  }
 });
 
 // Iniciar servidor
