@@ -1,8 +1,11 @@
 import express from "express";
-import bruxos from "./src/data/bruxos.js"
+//import bruxos from "./src/data/bruxos.js"
+import dados from "./src/data/dados.js"
 
 const serverPort = 3000;
 const app = express();
+
+const { bruxos, casas, varinhas, animais, pocoes } = dados;
 
 app.use(express.json());
 
@@ -41,7 +44,7 @@ app.get('/', (req, res) => {
 });
 
 // Rota das casas
-app.get('/casas', (req, res) => {
+/*app.get('/casas', (req, res) => {
   res.json({
     casas: [
       { nome: "Grifinória", animal: "🦁", fundador: "Godrico Gryffindor" },
@@ -50,7 +53,7 @@ app.get('/casas', (req, res) => {
       { nome: "Lufa-lufa", animal: "🦡", fundador: "Helga Hufflepuff" }
     ]
   });
-});
+});*/
 
 // Rota das casas
 app.get("/bruxos/casa/:casa", (req, res) => {
@@ -97,19 +100,31 @@ app.get("/bruxos/nome/:nome", (req, res) => {
   }
 });
 
-app.get("/bruxos/varinha/:varinha", (req, res) => {
-  let varinha = req.params.varinha.toLowerCase();
-  const bruxosEncontrados = bruxos.filter(b =>
-    b.varinha.toLowerCase().includes(varinha)
-  );
-  if (bruxosEncontrados.length > 0) {
-    res.status(200).json(bruxosEncontrados);
-  } else {
-    res.status(404).json({
-      mensagem: "Bruxo(s) nao encontrado(s)!"
-    });
-  }
+//Bruxos Por dados.js
+app.get("/bruxos", (req, res) => {
+  res.status(200).json(bruxos)
+})
+
+//Casas por dados.js
+app.get("/casas", (req, res) => {
+  res.status(200).json(casas);
+})
+
+//Varinhas por dados.js
+app.get("/varinhas", (req, res) => {
+  res.json(varinhas);
 });
+
+//Animais por Dados.js
+app.get("/animais", (req, res) => {
+  res.json(animais);
+});
+
+//pocoes por dados.js
+app.get("/pocoes", (req, res) => {
+  res.json(pocoes);
+});
+
 
 // Iniciar servidor
 app.listen(serverPort, () => {
