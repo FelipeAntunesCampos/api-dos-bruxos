@@ -106,7 +106,7 @@ app.get("/bruxos", (req, res) => {
     res.status(200).json(bruxos);
   } else {
     res.status(404).json({
-      mensagem: "Nenhum bruxo encontrado nessa casa!"
+      mensagem: "Nenhum Bruxo encontrado!"
     })
   }
 })
@@ -117,7 +117,7 @@ app.get("/casas", (req, res) => {
     res.status(200).json(casas);
   } else {
     res.status(404).json({
-      mensagem: "Nenhum bruxo encontrado nessa casa!"
+      mensagem: "Nenhuma Casa encontrado!"
     })
   }
 })
@@ -129,7 +129,7 @@ app.get("/varinhas", (req, res) => {
     res.status(200).json(varinhas);
   } else {
     res.status(404).json({
-      mensagem: "Nenhum bruxo encontrado nessa casa!"
+      mensagem: "Nenhuma varinha encontrada!"
     })
   }
 });
@@ -140,7 +140,7 @@ app.get("/animais", (req, res) => {
     res.status(200).json(animais);
   } else {
     res.status(404).json({
-      mensagem: "Nenhum bruxo encontrado nessa casa!"
+      mensagem: "Nenhum animal encontrado!"
     })
   }
 });
@@ -151,7 +151,7 @@ app.get("/pocoes", (req, res) => {
     res.status(200).json(pocoes);
   } else {
     res.status(404).json({
-      mensagem: "Nenhum bruxo encontrado nessa casa!"
+      mensagem: "nenhuma poção encontrada"
     })
   }
 });
