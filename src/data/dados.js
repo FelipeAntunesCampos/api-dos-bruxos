@@ -12,7 +12,35 @@ const bruxos = [
 ];
 
 const casas = [
-   
+    {
+        id: 1,
+        nome: "Grifinória",
+        fundador: "Godric Gryffindor",
+        cores: "Vermelho e Dourado",
+        animal: "Leão"
+    },
+    {
+        id: 2,
+        nome: "Sonserina",
+        fundador: "Salazar Slytherin",
+        cores: "Verde e Prata",
+        animal: "Serpente"
+    },
+    {
+    id: 3,
+    nome: "Cornival",
+    fundador: "Romena Ravenclaw",
+    cores: "Azul e Bronze",
+    animal: "Águia"
+    },
+    {
+        id: 4,
+        nome: "Lufa-Lufa",
+        fundador: "Helga Hufflepuff",
+        cores: "Amarelo e Preto",
+        animal: "Texugo"
+    
+    }
 ];
 
 const varinhas = [
