@@ -134,6 +134,23 @@ app.get("/varinhas", (req, res) => {
   }
 });
 
+//Varinhas por id
+app.get("/varinhas/:id", (req, res) => {
+  let id = req.params.id;
+  id = parseInt(id);
+  const casa = casas.find(b => b.id === id);
+  if (casa) {
+    res.status(200).json(casa);
+  } else {
+    res.status(404).json({
+      "success": false,
+      "error": "Varinhas não encontradas",
+      "message": "Nenhuma Varinha",
+      "codigo": "WIZARD_NOT_FOUND"
+    });
+  }
+});
+
 //Animais por Dados.js
 app.get("/animais", (req, res) => {
   if (animais.length > 0) {
@@ -145,6 +162,25 @@ app.get("/animais", (req, res) => {
   }
 });
 
+//animais por id
+app.get("/animais/:id", (req, res) => {
+  let id = req.params.id;
+  id = parseInt(id);
+  const animal = animais.find(b => b.id === id);
+  if (animal) {
+    res.status(200).json(animal);
+  } else {
+    res.status(404).json({
+      "success": false,
+      "error": "Animais não encontrados",
+      "message": "Nenhum animal encontrado",
+      "codigo": "WIZARD_NOT_FOUND"
+    });
+  }
+});
+
+
+
 //pocoes por dados.js
 app.get("/pocoes", (req, res) => {
   if (pocoes.length > 0) {
@@ -153,6 +189,23 @@ app.get("/pocoes", (req, res) => {
     res.status(404).json({
       mensagem: "nenhuma poção encontrada"
     })
+  }
+});
+
+//poções por id
+app.get("/pocoes/:id", (req, res) => {
+  let id = req.params.id;
+  id = parseInt(id);
+  const pocao = pocoes.find(b => b.id === id);
+  if (pocao) {
+    res.status(200).json(pocao);
+  } else {
+    res.status(404).json({
+      "success": false,
+      "error": "Poções não encontradas",
+      "message": "Nenhuma Poção",
+      "codigo": "WIZARD_NOT_FOUND"
+    });
   }
 });
 
