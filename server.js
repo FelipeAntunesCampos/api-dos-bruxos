@@ -56,7 +56,7 @@ app.get('/', (req, res) => {
 });*/
 
 // Rota das casas
-app.get("/bruxos/casa/:casa", (req, res) => {
+/*app.get("/bruxos/casa/:casa", (req, res) => {
   let casa = req.params.casa;
   const bruxosDaCasa = bruxos.filter(b => b.casa.toLowerCase() === casa.toLowerCase());
   if (bruxosDaCasa.length > 0) {
@@ -98,31 +98,62 @@ app.get("/bruxos/nome/:nome", (req, res) => {
       mensagem: "Bruxo(s) nao encontrado(s)!"
     });
   }
-});
+}); */
 
 //Bruxos Por dados.js
 app.get("/bruxos", (req, res) => {
-  res.status(200).json(bruxos)
+  if (bruxos.length > 0) {
+    res.status(200).json(bruxos);
+  } else {
+    res.status(404).json({
+      mensagem: "Nenhum bruxo encontrado nessa casa!"
+    })
+  }
 })
 
 //Casas por dados.js
 app.get("/casas", (req, res) => {
-  res.status(200).json(casas);
+  if (casas.length > 0) {
+    res.status(200).json(casas);
+  } else {
+    res.status(404).json({
+      mensagem: "Nenhum bruxo encontrado nessa casa!"
+    })
+  }
 })
+
 
 //Varinhas por dados.js
 app.get("/varinhas", (req, res) => {
-  res.json(varinhas);
+  if (varinhas.length > 0) {
+    res.status(200).json(varinhas);
+  } else {
+    res.status(404).json({
+      mensagem: "Nenhum bruxo encontrado nessa casa!"
+    })
+  }
 });
 
 //Animais por Dados.js
 app.get("/animais", (req, res) => {
-  res.json(animais);
+  if (animais.length > 0) {
+    res.status(200).json(animais);
+  } else {
+    res.status(404).json({
+      mensagem: "Nenhum bruxo encontrado nessa casa!"
+    })
+  }
 });
 
 //pocoes por dados.js
 app.get("/pocoes", (req, res) => {
-  res.json(pocoes);
+  if (pocoes.length > 0) {
+    res.status(200).json(pocoes);
+  } else {
+    res.status(404).json({
+      mensagem: "Nenhum bruxo encontrado nessa casa!"
+    })
+  }
 });
 
 
